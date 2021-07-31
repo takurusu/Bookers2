@@ -1,0 +1,12 @@
+<% @books.each do |book| %>
+<div>
+  <%= link_to book_path(book.id) do %>
+
+  <% end %>
+  <p>投稿ユーザー画像：</p>
+  <p>Title：<%= book.title %></p>
+  <p>Opinion：<%= book.body %></p>
+  <p>ユーザーネーム：<%= book.user.name %></p>
+</div>
+<% end %>
+<%= paginate @books %>
