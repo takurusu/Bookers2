@@ -1,12 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/bfeb8eca56.js" crossorigin="anonymous"></script>
+  </head>
   <div class="container">
     <div class="row">
       <div class="col-md-3">
         <div class="User-info">
           <h2>User info</h2>
-          <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-          <p>name<%= @user.name %></p>
-          <p>introduction</p>
-          <%= link_to "edit", edit_user_path(@user) %>
+          <div class="profile_image">
+            <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+          </div>
+            <table class="table table-stripped">
+              <tr>
+                <td>name</td>
+                <td><%= @user.name %></td>
+              </tr>
+              <tr>
+                <td>introduction</td>
+              </tr>
+            </table>
+          <div class="edit_user_link">
+            <%= link_to "edit", edit_user_path(@user) %>
+          </div>
         </div>
         <div class="New-book">
           <h2>New book</h2>
@@ -26,18 +49,24 @@
         </div>
       </div>
       <div class="col-md-8 offset-md-1">
-        <div class="books">
+        <table class="table table-stripped">
           <h2>Books</h2>
-          <% @books.each do |book| %>
-          <div>
-            <%= link_to book_path(book.id) do %>
+          <thread>
+            <th>Title</th>
+            <th>Opinion</th>
+          </thread>
+          <tbody>
+            <% @books.each do |book| %>
+              <tr>
+                <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
+                <td><%= book.title %><%= link_to book_path(book.id) do %><% end %></td>
+                <td><%= book.body %></td>
+              </tr>
             <% end %>
-            <p>Title：<%= book.title %></p>
-            <p>Opinion：<%= book.body %></p>
-          </div>
-          <% end %>
-          <%= paginate @books %>
-        </div>
+            <%= paginate @books %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
+</html>

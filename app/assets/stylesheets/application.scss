@@ -14,3 +14,21 @@
  *= require_self
  */
  @import "bootstrap";
+
+.nav-item {
+  font-weight: bold;
+  color: white;
+}
+
+.row {
+  margin-right: 15px;
+  margin-left: -15px;
+}
+
+.profile_image {
+  padding-bottom: 15px;
+}
+
+.edit_user_link {
+  padding-bottom: 15px;
+}
