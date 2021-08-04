@@ -18,11 +18,11 @@
 .nav-item {
   font-weight: bold;
   color: white;
+  display: flex;
 }
 
 .row {
-  margin-right: 15px;
-  margin-left: -15px;
+  display: flex;
 }
 
 .profile_image {
@@ -31,4 +31,8 @@
 
 .edit_user_link {
   padding-bottom: 15px;
+}
+
+.btn {
+  
 }

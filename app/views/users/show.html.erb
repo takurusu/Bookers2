@@ -10,48 +10,14 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/bfeb8eca56.js" crossorigin="anonymous"></script>
   </head>
-  <div class="container">
+  <div class="container px-5 px-sm-0">
     <div class="row">
-      <div class="col-md-3">
-        <div class="User-info">
-          <h2>User info</h2>
-          <div class="profile_image">
-            <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-          </div>
-            <table class="table table-stripped">
-              <tr>
-                <td>name</td>
-                <td><%= @user.name %></td>
-              </tr>
-              <tr>
-                <td>introduction</td>
-              </tr>
-            </table>
-          <div class="edit_user_link">
-            <%= link_to "edit", edit_user_path(@user) %>
-          </div>
-        </div>
-        <div class="New-book">
-          <h2>New book</h2>
-          <% if @book.errors.any? %>
-            <%= @book.errors.count %>件のエラーが発生しました
-            <%= @book.errors.full_messages.each do |message| %>
-              <%= message %>
-            <% end %>
-          <% end %>
-          <%= form_with model: @book, local:true do |f| %>
-            <h4>Title</h4>
-            <%= f.text_field :title %>
-            <h4>Opinion</h4>
-            <%= f.text_area :body %>
-            <%= f.submit 'Create Book' %>
-          <% end %>
-        </div>
-      </div>
+      <%= render 'users/list', user: @user, book: @book %>
       <div class="col-md-8 offset-md-1">
         <table class="table table-stripped">
           <h2>Books</h2>
           <thread>
+            <th></th>
             <th>Title</th>
             <th>Opinion</th>
           </thread>
