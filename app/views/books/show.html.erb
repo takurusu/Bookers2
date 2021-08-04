@@ -1,4 +1,5 @@
 <div class="book-body">
+  <p><%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
   <p>Title：<%= @book.title %></p>
   <p>Opinion：<%= @book.body %></p>
   <p>name：<%= @book.user.name %></p>
