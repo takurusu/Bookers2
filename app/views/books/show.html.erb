@@ -1,10 +1,26 @@
-<div class="book-body">
-  <p><%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-  <p>Title：<%= @book.title %></p>
-  <p>Opinion：<%= @book.body %></p>
-  <p>name：<%= @book.user.name %></p>
-  <p>投稿日時：<%= @book.created_at.strftime('%Y/%m/%d') %></p>
-  <% if @book.user == current_user %>
-    <%= link_to "Destroy", book_path(@book), method: :delete %>
-  <% end %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <%= render 'users/list', user: @book.user, book: @new %>
+    <div class="col-md-8 offset-md-1">
+      <div class="Users">
+        <table class="table table-stripped">
+          <h2>Book detail</h2>
+          <tbody>
+            <tr>
+              <td>
+                <p><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+                <p><%= link_to @book.user.name, user_path(@book.user) %></p>
+              </td>
+              <td><%= @book.title %></td>
+              <td><%= @book.body %></td>
+              <% if @book.user == current_user %>
+              <td><%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success" %></td>
+              <td><%= link_to "Destroy", book_path(@book), method: :delete, class:"btn btn-sm btn-danger" %></td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
