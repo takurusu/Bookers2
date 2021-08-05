@@ -15,10 +15,22 @@
  */
  @import "bootstrap";
 
+.shadow-sm {
+  margin-bottom: 15px;
+}
+
 .nav-item {
   font-weight: bold;
   color: white;
   display: flex;
+}
+
+.field {
+  margin-bottom: 10px;
+}
+
+.actions {
+  margin-bottom: 10px;
 }
 
 .row {
@@ -34,5 +46,5 @@
 }
 
 .btn {
-  
+
 }
