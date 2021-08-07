@@ -9,14 +9,15 @@ class BooksController < ApplicationController
     @user = User.find(current_user.id)
     @books = Book.page(params[:page]).reverse_order
     if @book.save
-      redirect_to edit_book_path(@book)
+      redirect_to book_path(@book)
+      flash[:success] = 'You have created book successfully.'
     else
       render :index
     end
   end
 
   def index
-    @books = Book.page(params[:page]).reverse_order
+    @books = Book.all
     @user = User.find(current_user.id)
     @book = Book.new
   end
@@ -34,7 +35,8 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     if @book.update(book_params)
       redirect_to book_path(@book)
-    else 
+      flash[:success] = 'You have updated book successfully.'
+    else
       render :edit
     end
   end
